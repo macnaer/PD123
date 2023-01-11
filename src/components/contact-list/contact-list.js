@@ -2,7 +2,11 @@ import React from "react";
 import Header from "../header/header";
 import ContactItem from "./contact-item/contact-item";
 
-const ContactList = () => {
+const ContactList = ({ List }) => {
+  const item = List.map((contact) => {
+    return <ContactItem key={contact.id} {...contact} />;
+  });
+
   return (
     <>
       <div className="col-lg-9 col-md-8 col-sm-12">
@@ -32,7 +36,7 @@ const ContactList = () => {
               <div className="field email icons">Email</div>
             </div>
           </div>
-          <ContactItem />
+          {item}
         </div>
       </div>
     </>
