@@ -1,14 +1,16 @@
 // Components
-import Header from "./components/header/header";
 import Sidebar from "./components/sidebar/sidebar";
 import ContactList from "./components/contact-list/contact-list";
 
 function App() {
   return (
     <>
-      <Header />
-      <Sidebar />
-      <ContactList />
+      <div className="container bootstrap snippets bootdeys bootdey">
+        <div className="row decor-default">
+          <Sidebar />
+          <ContactList />
+        </div>
+      </div>
     </>
   );
 }
