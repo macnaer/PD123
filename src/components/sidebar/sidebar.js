@@ -8,14 +8,6 @@ const Sidebar = () => {
           All contacts<span>76</span>
         </div>
         <div className="list">
-          <div className="input-group">
-            <input
-              type="text"
-              className="contacts-search"
-              placeholder="Search"
-            />
-          </div>
-          <div className="head">Labels</div>
           <div className="unit">
             <div className="lab lab-success">Work</div>
             <span>7</span>
@@ -32,9 +24,6 @@ const Sidebar = () => {
             <div className="lab lab-warning">Friends</div>
             <span>47</span>
           </div>
-          <button type="button" className="btn btn-primary font-weight-700">
-            Add new label
-          </button>
         </div>
       </div>
     </div>
