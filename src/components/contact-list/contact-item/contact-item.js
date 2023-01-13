@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 const GetCategoryColor = (category) => {
@@ -37,6 +39,12 @@ const ContactItem = ({ name, phone, email, category, avatar }) => {
       </div>
       <div className="field phone">{phone}</div>
       <div className="field email">{email}</div>
+      <div className="icons edit">
+        <FontAwesomeIcon icon={faEdit} size="2x" />
+      </div>
+      <div className="icons delete">
+        <FontAwesomeIcon icon={faTrash} size="2x" />
+      </div>
     </div>
   );
 };

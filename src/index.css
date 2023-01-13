@@ -206,7 +206,7 @@ input {
   text-overflow: ellipsis;
 }
 .contacts-list .unit .name {
-  width: 40%;
+  width: 35%;
   padding: 0 0 0 80px;
   position: relative;
 }
@@ -216,11 +216,11 @@ input {
   top: -8px;
 }
 .contacts-list .unit .phone {
-  width: 30%;
+  width: 25%;
   padding: 0 0 0 20px;
 }
 .contacts-list .unit .email {
-  width: 30%;
+  width: 25%;
   padding: 0 0 0 20px;
   overflow: visible;
 }
@@ -295,4 +295,15 @@ input {
 }
 .contacts-list .lab-primary {
   background: #7266ba;
+}
+.icons {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.icons.edit {
+  color: #f2a654;
+}
+.icons.delete {
+  color: crimson;
 }
