@@ -11,13 +11,15 @@ class App extends React.Component {
         name: "Alexander Verdnam",
         phone: "+1-800-600-9898",
         email: "example@gmail.com",
-        category: "Friend",
+        avatar: "https://bootdey.com/img/Content/avatar/avatar1.png",
+        category: "Work",
       },
       {
         id: 2,
         name: "Emma Vatson",
         phone: "+9-456-600-9898",
         email: "emma@gmail.com",
+        avatar: "https://bootdey.com/img/Content/avatar/avatar3.png",
         category: "Family",
       },
     ],
@@ -30,7 +32,7 @@ class App extends React.Component {
       <>
         <div className="container bootstrap snippets bootdeys bootdey">
           <div className="row decor-default">
-            <Sidebar />
+            <Sidebar List={contactList} />
             <ContactList List={contactList} />
           </div>
         </div>
