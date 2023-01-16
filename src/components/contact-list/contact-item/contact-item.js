@@ -21,9 +21,18 @@ const GetCategoryColor = (category) => {
   return categoryStyle;
 };
 
-const ContactItem = ({ name, phone, email, category, avatar, gender }) => {
+const ContactItem = ({
+  name,
+  phone,
+  email,
+  category,
+  avatar,
+  gender,
+  onDelete,
+}) => {
   let categoryStyle = GetCategoryColor(category);
-  // ceate URL for avatar
+  const URL = `https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
+
   return (
     <div className="unit">
       <div className="field name">
@@ -33,7 +42,7 @@ const ContactItem = ({ name, phone, email, category, avatar, gender }) => {
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"></svg>
         </div>
         <div>
-          <img src={avatar} alt="image" className="avatar" /> {name}
+          <img src={URL} alt="image" className="avatar" /> {name}
         </div>
         <div className={categoryStyle}>{category}</div>
       </div>
@@ -43,7 +52,7 @@ const ContactItem = ({ name, phone, email, category, avatar, gender }) => {
         <FontAwesomeIcon icon={faEdit} size="2x" />
       </div>
       <div className="icons delete">
-        <FontAwesomeIcon icon={faTrash} size="2x" />
+        <FontAwesomeIcon icon={faTrash} onClick={onDelete} size="2x" />
       </div>
     </div>
   );

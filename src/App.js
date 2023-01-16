@@ -38,6 +38,13 @@ class App extends React.Component {
     ],
   };
 
+  onDelete = (id) => {
+    const { contactList } = this.state;
+    const index = contactList.findIndex((i) => i.id === id);
+    let tmpList = contactList.slice();
+    console.log(tmpList);
+  };
+
   render() {
     const { contactList } = this.state;
 
@@ -52,7 +59,12 @@ class App extends React.Component {
                 <Routes>
                   <Route
                     path="/"
-                    element={<ContactList List={contactList} />}
+                    element={
+                      <ContactList
+                        onDelete={this.onDelete}
+                        List={contactList}
+                      />
+                    }
                   />
                   <Route path="/add-contact" element={<AddContact />} />
                 </Routes>

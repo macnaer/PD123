@@ -1,10 +1,15 @@
 import React from "react";
-import Header from "../header/header";
 import ContactItem from "./contact-item/contact-item";
 
-const ContactList = ({ List }) => {
+const ContactList = ({ List, onDelete }) => {
   const item = List.map((contact) => {
-    return <ContactItem key={contact.id} {...contact} />;
+    return (
+      <ContactItem
+        key={contact.id}
+        {...contact}
+        onDelete={() => onDelete(contact.id)}
+      />
+    );
   });
 
   return (
