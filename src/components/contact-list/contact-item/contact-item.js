@@ -21,9 +21,9 @@ const GetCategoryColor = (category) => {
   return categoryStyle;
 };
 
-const ContactItem = ({ name, phone, email, category, avatar }) => {
+const ContactItem = ({ name, phone, email, category, avatar, gender }) => {
   let categoryStyle = GetCategoryColor(category);
-
+  // ceate URL for avatar
   return (
     <div className="unit">
       <div className="field name">
