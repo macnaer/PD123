@@ -42,7 +42,13 @@ class App extends React.Component {
     const { contactList } = this.state;
     const index = contactList.findIndex((i) => i.id === id);
     let tmpList = contactList.slice();
-    console.log(tmpList);
+    const part1 = tmpList.slice(0, index);
+    const part2 = tmpList.slice(index + 1);
+    tmpList = [...part1, ...part2];
+
+    this.setState({
+      contactList: tmpList,
+    });
   };
 
   render() {
