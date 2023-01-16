@@ -2,7 +2,9 @@
 import Sidebar from "./components/sidebar/sidebar";
 import ContactList from "./components/contact-list/contact-list";
 import React from "react";
-
+import { Routes, Route, Router } from "react-router-dom";
+import AddContact from "./components/addContact/addContact";
+import Header from "./components/header/header";
 class App extends React.Component {
   state = {
     contactList: [
@@ -33,7 +35,18 @@ class App extends React.Component {
         <div className="container bootstrap snippets bootdeys bootdey">
           <div className="row decor-default">
             <Sidebar List={contactList} />
-            <ContactList List={contactList} />
+            <div className="col-lg-9 col-md-8 col-sm-12">
+              <div className="contacts-list">
+                <Header />
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<ContactList List={contactList} />}
+                  />
+                  <Route path="/add-contact" element={<AddContact />} />
+                </Routes>
+              </div>
+            </div>
           </div>
         </div>
       </>
