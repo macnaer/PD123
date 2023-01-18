@@ -21,7 +21,10 @@ const AddContact = ({ onAddNewContact }) => {
     setEmail(event.target.value);
   };
   const onGetAvatar = (event) => {
-    setAvatar(event.target.value);
+    if (event.target.value >= 0 && event.target.value <= 99) {
+      setAvatar(event.target.value);
+    }
+    event.preventDefault();
   };
   const onGetGender = (event) => {
     setGender(event.target.value);
@@ -50,6 +53,8 @@ const AddContact = ({ onAddNewContact }) => {
   if (isRedirect) {
     return <Navigate to={"/"} />;
   }
+
+  const URL = `https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
 
   return (
     <>
@@ -134,6 +139,11 @@ const AddContact = ({ onAddNewContact }) => {
         </div>
         <div className="col-5">
           <h2>User photo</h2>
+          {avatar >= 0 && avatar <= 99 && avatar !== "" ? (
+            <img src={URL} alt="..." className="img-thumbnail" />
+          ) : (
+            <p>No photo.</p>
+          )}
         </div>
       </div>
     </>
