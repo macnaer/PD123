@@ -1,15 +1,17 @@
+import React from "react";
+import { v4 as uuidv4 } from "uuid";
+import { Routes, Route, Router } from "react-router-dom";
 // Components
 import Sidebar from "./components/sidebar/sidebar";
 import ContactList from "./components/contact-list/contact-list";
-import React from "react";
-import { Routes, Route, Router } from "react-router-dom";
+
 import AddContact from "./components/addContact/addContact";
 import Header from "./components/header/header";
 class App extends React.Component {
   state = {
     contactList: [
       {
-        id: 1,
+        id: uuidv4(),
         name: "Alexander Verdnam",
         phone: "+1-800-600-9898",
         email: "example@gmail.com",
@@ -18,7 +20,7 @@ class App extends React.Component {
         category: "Work",
       },
       {
-        id: 2,
+        id: uuidv4(),
         name: "Emma Vatson",
         phone: "+9-456-600-9898",
         email: "emma@gmail.com",
@@ -27,7 +29,7 @@ class App extends React.Component {
         category: "Family",
       },
       {
-        id: 3,
+        id: uuidv4(),
         name: "Bill Vatson",
         phone: "+9-456-600-1234",
         email: "bill@gmail.com",
@@ -45,6 +47,16 @@ class App extends React.Component {
     const part1 = tmpList.slice(0, index);
     const part2 = tmpList.slice(index + 1);
     tmpList = [...part1, ...part2];
+
+    this.setState({
+      contactList: tmpList,
+    });
+  };
+
+  onAddNewContact = (newContact) => {
+    const { contactList } = this.state;
+    const tmpList = contactList.slice();
+    tmpList.unshift(newContact);
 
     this.setState({
       contactList: tmpList,
@@ -72,7 +84,12 @@ class App extends React.Component {
                       />
                     }
                   />
-                  <Route path="/add-contact" element={<AddContact />} />
+                  <Route
+                    path="/add-contact"
+                    element={
+                      <AddContact onAddNewContact={this.onAddNewContact} />
+                    }
+                  />
                 </Routes>
               </div>
             </div>
