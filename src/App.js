@@ -38,6 +38,7 @@ class App extends React.Component {
         category: "Family",
       },
     ],
+    selectedContact: null,
   };
 
   onDelete = (id) => {
