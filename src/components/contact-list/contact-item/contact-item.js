@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const GetCategoryColor = (category) => {
   let categoryStyle = "lab lab-warning";
@@ -29,6 +30,7 @@ const ContactItem = ({
   avatar,
   gender,
   onDelete,
+  onSelectContact,
 }) => {
   let categoryStyle = GetCategoryColor(category);
   const URL = `https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
@@ -49,7 +51,9 @@ const ContactItem = ({
       <div className="field phone">{phone}</div>
       <div className="field email">{email}</div>
       <div className="icons edit">
-        <FontAwesomeIcon icon={faEdit} size="2x" />
+        <Link to="/edit-contact">
+          <FontAwesomeIcon icon={faEdit} onClick={onSelectContact} size="2x" />
+        </Link>
       </div>
       <div className="icons delete">
         <FontAwesomeIcon icon={faTrash} onClick={onDelete} size="2x" />

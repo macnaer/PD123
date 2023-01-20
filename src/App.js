@@ -7,6 +7,7 @@ import ContactList from "./components/contact-list/contact-list";
 
 import AddContact from "./components/addContact/addContact";
 import Header from "./components/header/header";
+import EditContact from "./components/editContact/editContact";
 class App extends React.Component {
   state = {
     contactList: [
@@ -64,8 +65,29 @@ class App extends React.Component {
     });
   };
 
-  render() {
+  onSelectContact = (id) => {
     const { contactList } = this.state;
+    const index = contactList.findIndex((el) => el.id === id);
+    const selectedContact = contactList[index];
+
+    this.setState({
+      selectedContact: selectedContact,
+    });
+  };
+
+  onEditContact = (editedContact) => {
+    const { contactList } = this.state;
+    const index = contactList.findIndex((el) => el.id === editedContact.id);
+    const tmpList = contactList.slice();
+    tmpList[index] = editedContact;
+
+    this.setState({
+      contactList: tmpList,
+    });
+  };
+
+  render() {
+    const { contactList, selectedContact } = this.state;
 
     return (
       <>
@@ -81,6 +103,7 @@ class App extends React.Component {
                     element={
                       <ContactList
                         onDelete={this.onDelete}
+                        onSelectContact={this.onSelectContact}
                         List={contactList}
                       />
                     }
@@ -89,6 +112,15 @@ class App extends React.Component {
                     path="/add-contact"
                     element={
                       <AddContact onAddNewContact={this.onAddNewContact} />
+                    }
+                  />
+                  <Route
+                    path="/edit-contact"
+                    element={
+                      <EditContact
+                        onEditContact={this.onEditContact}
+                        selectedContact={selectedContact}
+                      />
                     }
                   />
                 </Routes>

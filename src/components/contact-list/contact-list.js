@@ -1,13 +1,14 @@
 import React from "react";
 import ContactItem from "./contact-item/contact-item";
 
-const ContactList = ({ List, onDelete }) => {
+const ContactList = ({ List, onDelete, onSelectContact }) => {
   const item = List.map((contact) => {
     return (
       <ContactItem
         key={contact.id}
         {...contact}
         onDelete={() => onDelete(contact.id)}
+        onSelectContact={() => onSelectContact(contact.id)}
       />
     );
   });
